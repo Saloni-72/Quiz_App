@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz_App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            min-height: 100vh;
+        }
+
+        .container {
+          background: white;
+          padding: 30px;
+          border-radius: 15px;
+          width: 90%;
+          max-width: 400px;
+          margin: 60px auto;
+          text-align: center;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }      
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background: #5b86e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #36d1dc;
+        }
+    
+        header{
+          background-color: blue;
+        }
+        .navbar {
+          padding: 10px 20px;
+          background: linear-gradient(to right, rgb(138, 1, 138), #a044ff);
+        }
+
+        .container-fluid {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .nav-left {
+          margin: 0;
+          margin-top: 2px;
+          line-height: 1.2;
+          display: flex;
+          flex-direction: column; 
+        }
+
+      .nav-left h2 {
+        margin: 0;
+        font-size:25px;
+      }
+
+      .nav-left p {
+        margin: 2px 0 0 0;
+        font-size: 15px;   
+      }
+      .trophy-icon{
+        font-size:30px;
+        margin-bottom: 10px;
+        margin-top: 5px;
+        color: yellow;
+      }
+     
+    </style>
+</head>
+<body>
+<div class="header" style="color:rgb(242, 242, 248); ">
+   <nav class="navbar">
+  <div class="container-fluid">
+    <div class="nav-left">
+      <h2>Hi!</h2>
+      <p>Ready to enrich your knowledge.</p>
+    </div>
+    <div class="trophy-icon">
+        <a href="{% url 'leaderboard' %}"><i class="fa-solid fa-chart-column" style="color: yellow;"></i></a>
+     </div>
+  </div>
+</nav>
+<div class="container" style="color:black";>
+  <h2><b>Start Your Quiz</b><i class="fa-solid fa-bullseye" style="font-size:30px; color:red;"></i></h2>
+
+  <form method="POST" action="{% url 'start_quiz' %}">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Enter Your Name" required>
+     <select name="subject">
+        <option value="">Select Subject</option>
+        {% for subject in subjects %}
+          <option value="{{ subject.id }}">{{ subject.name }}</option>
+        {% endfor %}
+     </select><br>
+     <button type="submit">Start Quiz</button><br>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/88c0ee2187.js" crossorigin="anonymous"></script>
+</body>
+</html>
