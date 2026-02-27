@@ -5,11 +5,13 @@ This is a Django-based Quiz website where users can take quizzes.
 * Quiz interface with multiple questions
 * Automatic score calculation
 * Result display page
+* Leaderboard
 
 ## Tech Stack
 * Backend: Django (Python)
 * Database: SQLite
 * Frontend: HTML/CSS/JAVASCRIPT
+* Icon: Font Awesome
 
 ## How to Run
 * Activate the virtual environment: env\Scripts\activate
